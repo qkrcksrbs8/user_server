@@ -6,10 +6,9 @@ const bodyParser = require("body-parser"); // npm i body-parser
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-//테스트 라우터
-router.get('/user/test', (req, res) => {
-    res.json({'code':'S001'});
-})
+const user = require('./src/controllers/UserController');
+
+router.use('/user', user);
 
 //포트 연결
 router.listen(3001,()=>console.log(`http://localhost:3001`));
